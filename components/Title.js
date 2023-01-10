@@ -13,9 +13,9 @@ const styles= StyleSheet.create({
     title:{
         fontSize: 18,
         fontWeight: 'bold',
-        color: Colors.accentYellow,
+        color: 'white',
         textAlign: 'center',
         borderWidth: 2,
-        borderColor: Colors.accentYellow
+        borderColor: 'white'
     }
 });
