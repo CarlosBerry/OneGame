@@ -1,8 +1,27 @@
 import { useState } from "react";
-import { Text } from "react-native";
+import { Text,View, StyleSheet } from "react-native";
 
 function GameScreen(){
-  return  <Text>GameScreen!</Text>;
+  return  (
+  <View style={styles.screen}>
+    <View>
+        <Text>GameScreen!</Text>
+    </View>
+    <View>
+        <Text>Higher or lower?</Text>
+    </View>
+    
+  </View>
+  );
 }
 
 export default GameScreen;
+
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        marginTop: 100,
+        padding: 12
+    }
+});
+    
