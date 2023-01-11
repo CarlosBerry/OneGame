@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { Text,View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import NumberContainer from "../components/Game/NumbersContainer";
 import Title from "../components/Title";
 import PrimaryButton from "../components/PrimaryButton";
+import InstructionText from "../components/InstructionText";
+import Card from "../components/Card";
 
 function genRndBetween(min, max, exclude){
     const rndNum = Math.floor(Math.random()*(max-min))+min;
@@ -51,18 +53,26 @@ function GameScreen({userNumber, onGameOver}){
 
   return  (
   <View style={styles.screen}>
+    
     <View>
         <Title>Opponent's guess!</Title>
         <NumberContainer>{currentGuess}</NumberContainer>
     </View>
+    <Card>
     <View>
-        <Text>Higher or lower?</Text>
+        <InstructionText>Higher or lower?</InstructionText>
     
-    <View>
-        <PrimaryButton onPress={nextGuestHandler.bind(this,'lower')}>-</PrimaryButton>
-        <PrimaryButton onPress={nextGuestHandler.bind(this,'greater')}>++</PrimaryButton>
+    <View style = {styles.buttonsContainer}>
+        <View style= {styles.buttonContainer}>
+             <PrimaryButton onPress={nextGuestHandler.bind(this,'lower')}>-</PrimaryButton>
+        </View>
+        <View style= {styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuestHandler.bind(this,'greater')}>++</PrimaryButton>
+        </View>
+        
     </View>
     </View>
+    </Card>
     
   </View>
   );
@@ -77,6 +87,12 @@ const styles = StyleSheet.create({
         flex: 1,
       padding: 24
 
+    },
+    buttonsContainer: {
+        flexDirection: 'row'
+    },
+    buttonContainer: {
+        flex: 1
     }
     
 });
