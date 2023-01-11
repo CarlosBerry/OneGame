@@ -5,6 +5,7 @@ import Title from "../components/Title";
 import PrimaryButton from "../components/PrimaryButton";
 import InstructionText from "../components/InstructionText";
 import Card from "../components/Card";
+import {Ionicons} from '@expo/vector-icons';
 
 function genRndBetween(min, max, exclude){
     const rndNum = Math.floor(Math.random()*(max-min))+min;
@@ -64,10 +65,14 @@ function GameScreen({userNumber, onGameOver}){
     
     <View style = {styles.buttonsContainer}>
         <View style= {styles.buttonContainer}>
-             <PrimaryButton onPress={nextGuestHandler.bind(this,'lower')}>-</PrimaryButton>
+             <PrimaryButton onPress={nextGuestHandler.bind(this,'lower')}>
+                <Ionicons name="md-remove" size={24} color= 'white'/>
+                </PrimaryButton>
         </View>
         <View style= {styles.buttonContainer}>
-            <PrimaryButton onPress={nextGuestHandler.bind(this,'greater')}>++</PrimaryButton>
+            <PrimaryButton onPress={nextGuestHandler.bind(this,'greater')}>
+            <Ionicons name="md-add" size={24} color= 'white'/>
+                </PrimaryButton>
         </View>
         
     </View>
