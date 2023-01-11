@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Text,View, StyleSheet, Alert } from "react-native";
 import NumberContainer from "../components/Game/NumbersContainer";
 import Title from "../components/Title";
@@ -17,12 +17,20 @@ let minBoundary = 1;
 let maxBoundary = 100;
 
 
-function GameScreen({userNumber}){
-    const initialGuess= genRndBetween(minBoundary,maxBoundary, userNumber);
+function GameScreen({userNumber, onGameOver}){
+    const initialGuess= genRndBetween(1,100, userNumber);
     const[currentGuess, setCurrentGuess]=useState(initialGuess);
+
+    useEffect(() =>{
+    if(currentGuess===userNumber){
+       onGameOver();
+    }},
+    [currentGuess,userNumber,onGameOver]);
     
 
     function nextGuestHandler(direction){
+
+        
 
         if ((direction === 'lower' && currentGuess < userNumber) ||
         (direction === 'greater' && currentGuess > userNumber))
