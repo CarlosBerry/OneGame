@@ -4,7 +4,7 @@ import Title from "../components/Title";
 import Colors from "../constants/colors";
 
 
-function GameOverScreen({userNumber, roundNumber, onStartNewGame}){
+function GameOverScreen({ roundNumber, userNumber, onStartNewGame}){
     return (
         <View style= {styles.rootContainer}>
             <Title>Game Over screen!</Title>
