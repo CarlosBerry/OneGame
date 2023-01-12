@@ -6,6 +6,7 @@ import PrimaryButton from "../components/PrimaryButton";
 import InstructionText from "../components/InstructionText";
 import Card from "../components/Card";
 import {Ionicons} from '@expo/vector-icons';
+import GuessLogItem from "../components/GuessLogItem";
 
 function genRndBetween(min, max, exclude){
     const rndNum = Math.floor(Math.random()*(max-min))+min;
@@ -64,7 +65,7 @@ function GameScreen({userNumber, onGameOver}){
         setCurrentGuess(newRndNumber);
         setGuessRounds(prevGuessRounds =>[newRndNumber,...prevGuessRounds]);
     }
-    
+
     const guessRoundsListLength = guessRounds.length;
 
   return  (
@@ -93,11 +94,16 @@ function GameScreen({userNumber, onGameOver}){
     </View>
     </View>
     </Card>
-    <View>
+    <View style={styles.listContainer}>
         {/* {guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)} */}
         <FlatList
             data={guessRounds}
-            renderItem={(itemData) => <Text>{itemData.item}</Text>}
+            renderItem={(itemData) => (
+            <GuessLogItem
+            roundNumber={guessRoundsListLength - itemData.index}
+            guess={itemData.item}
+            />
+            )}
             keyExtractor={(item)=> item}
         />
     </View>
@@ -120,7 +126,11 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flex: 1
-    }
+    },
+    listContainer: {
+        flex: 1,
+        padding: 16,
+      }
     
 });
     
