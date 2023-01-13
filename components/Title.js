@@ -12,10 +12,12 @@ export default Title;
 const styles= StyleSheet.create({
     title:{
         fontFamily: 'open-sans-bold',
-        fontSize: 32,
+        fontSize: 28,
         color: 'white',
         textAlign: 'center',
         borderWidth: 2,
-        borderColor: 'white'
+        borderColor: 'white',
+        maxWidth: '90%'
+        
     }
 });
